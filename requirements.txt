@@ -1,6 +1,7 @@
 streamlit
-sentence-transformers
-faiss-cpu
 numpy
+faiss-cpu
+sentence-transformers
 openai
 torch
+torchvision
