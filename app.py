@@ -10,7 +10,7 @@ from sentence_transformers import SentenceTransformer
 from openai import OpenAI
 
 client = OpenAI(
-    api_key="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",
+    api_key=st.secrets["OPENROUTER_API_KEY"],
     base_url="https://openrouter.ai/api/v1"
 )
 
