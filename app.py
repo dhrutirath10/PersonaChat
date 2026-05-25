@@ -144,6 +144,14 @@ def load_chat_data():
     return all_messages
 
 all_messages = load_chat_data()
+if len(all_messages) == 0:
+    all_messages = [
+        "hi",
+        "wassup",
+        "bro chuppp",
+        "sleeping rn",
+        "wtf 😭"
+    ]
 
 # =====================================
 # LOAD MODEL + EMBEDDINGS
@@ -160,6 +168,8 @@ def load_model():
 
     else:
 
+        if len(all_messages) == 0:
+            all_messages.append("hi")
         embeddings = model.encode(all_messages)
 
         np.save("embeddings.npy", embeddings)
