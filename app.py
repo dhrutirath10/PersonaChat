@@ -12,6 +12,7 @@ from openai import OpenAI
 client = OpenAI(
     api_key=st.secrets["OPENROUTER_API_KEY"],
     base_url="https://openrouter.ai/api/v1"
+    
 )
 
 st.set_page_config(
@@ -90,7 +91,7 @@ st.markdown(
 )
 
 st.markdown(
-    '<div class="subtitle">Your chaotic digital clone</div>',
+    '<div class="subtitle">texts back 24/7 when u dont have friends</div>',
     unsafe_allow_html=True
 )
 
