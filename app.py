@@ -250,10 +250,14 @@ def chatbot_reply(user_input):
     for idx in indices[0]:
 
         examples.append(all_messages[idx])
-        examples = list(set(examples))
-        random.shuffle(examples)
-        examples = examples[:6]
-        example_text = "\n".join(examples)
+    examples = list(set(examples))
+    random.shuffle(examples)
+    examples = examples[:6]
+    example_text = "\n".join(examples)
+    relationship_examples = ""
+    if bf_mode and os.path.exists("inesh.txt"):
+        with open("inesh.txt", "r", encoding="utf-8") as f:
+            relationship_examples = f.read()[:12000]
 
     prompt = f"""
 You are NOT an AI assistant.
@@ -300,6 +304,9 @@ Rules:
 Examples of Dhruti texting:
 
 {example_text}
+Relationship chats with Inesh:
+
+{relationship_examples}
 
 Recent conversation:
 
