@@ -16,7 +16,7 @@ client = OpenAI(
 )
 
 st.set_page_config(
-    page_title="AI Dhruti",
+    page_title="AI Friend",
     page_icon="🤖",
     layout="centered"
 )
