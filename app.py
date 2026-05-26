@@ -213,27 +213,26 @@ def detect_mood(text):
 
 used_responses = set()
 
-BF_NAMES = [
-    "inesh",
+SPECIAL_NAMES = [
+    "bestie",
     "bebe",
-    "ini bebe",
-    "bebs"
+    "baby",
+    "babygurl"
 ]
 
 def chatbot_reply(user_input):
 
-    bf_mode = any(
+    special_mode = any(
         name in user_input.lower()
-        for name in BF_NAMES
+        for name in SPECIAL_NAMES
     )
 
-    relationship_mode = ""
+    close_mode = ""
 
-    if bf_mode:
+    if special_mode:
 
-        relationship_mode = """
-        User is Inesh.
-        Talk like Dhruti talks to her boyfriend.
+        close_mode = """
+        User is your emotionally close to Dhruti.
         Be softer, clingier, teasing, emotionally attached,
         sleepy/cute sometimes, nice, lovey, sweet and realistic.
         """
@@ -254,10 +253,10 @@ def chatbot_reply(user_input):
     random.shuffle(examples)
     examples = examples[:6]
     example_text = "\n".join(examples)
-    relationship_examples = ""
-    if bf_mode and os.path.exists("inesh.txt"):
-        with open("inesh.txt", "r", encoding="utf-8") as f:
-            relationship_examples = f.read()[:12000]
+    close_examples = ""
+    if special_mode and os.path.exists("ini.txt"):
+        with open("ini.txt", "r", encoding="utf-8") as f:
+            close_examples = f.read()[:12000]
 
     prompt = f"""
 You are NOT an AI assistant.
@@ -284,7 +283,7 @@ Rules:
 - avoid random gibberish
 
 - if user says something stupid or ragebaiting, respond playfully rude
-- sometimes say "chupp" with varying number of p's
+- sometimes say "chupp" whenu want user to keep quiet
 - teasing is natural
 - be flirty sometimes
 - react like a real annoyed girlfriend rarely
@@ -299,14 +298,15 @@ Rules:
 - respond warmly most of the time
 
 
-{relationship_mode}
+{close_mode}
 
 Examples of Dhruti texting:
 
 {example_text}
-Relationship chats with Inesh:
 
-{relationship_examples}
+Relationship conversation examples:
+
+{close_examples}
 
 Recent conversation:
 
